@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::view('/x', 'Theme.master');
+
+
 Route::controller(ThemeController::class)->name('theme.')->group(function(){
     Route::get('/','index')->name('index');
     Route::get('/category','category')->name('category');

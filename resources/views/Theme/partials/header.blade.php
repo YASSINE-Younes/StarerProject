@@ -61,8 +61,9 @@
 
                                           <form action="{{ route('logout') }}" method="post">
                                               @csrf
-                                              <a type="submit" class="nav-link" href="javascript:$('form').submit();">Logout</a>
-                                              
+                                              <a type="submit" class="nav-link"
+                                                  href="javascript:$('form').submit();">Logout</a>
+
                                           </form>
                                       </li>
                                   </ul>

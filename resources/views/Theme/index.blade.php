@@ -1,4 +1,10 @@
 @extends('Theme.master')
+@section('home-active' , 'active')
+@section('title','Index');
+
+@section('t1','Home Page');
+@section('t2','Travel With Yassine');
+@section('t3','Welcome');
 
 @section('content')
  <!--================ Blog slider start =================-->  

@@ -2,9 +2,9 @@
     <div class="container">
       <div class="hero-banner">
         <div class="hero-banner__content">
-          <h3>YASSINE Tours & Travels</h3>
-          <h1>Amazing Places on earth</h1>
-          <h4>December 12, 2024</h4>
+          <h3>@yield('t1')</h3>
+          <h1>@yield('t2')</h1>
+          <h4>@yield('t3')</h4>
         </div>
       </div>
     </div>

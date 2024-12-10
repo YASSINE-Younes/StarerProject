@@ -6,7 +6,10 @@
 @section('t2','Travel With Yassine');
 @section('t3','Welcome');
 
+
 @section('content')
+
+
  <!--================ Blog slider start =================-->  
  <section>
   <div class="container">

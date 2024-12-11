@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\ThemeController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//  SUBSCRIPER ROUTE 
+ 
+Route::post('/subscriber/store', [SubscriberController::class, 'store'])->name('subscriber.store');
 
-Route::view('/x', 'Theme.master');
 
+ 
 
+//  THEME ROUTE 
 Route::controller(ThemeController::class)->name('theme.')->group(function(){
     Route::get('/','index')->name('index');
     Route::get('/category','category')->name('category');

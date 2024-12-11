@@ -40,9 +40,9 @@
 
 
                     {{-- CODE MESSAGE ENVOYER AVEC SUCEES PARAMETRE STATUS  --}}
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
+                    @if (session('status_message_contact'))
+                        <div class="alert alert-warning">
+                            {{ session('status_message_contact') }}
                         </div>
                     @endif
 

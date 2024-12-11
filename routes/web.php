@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\ThemeController;
@@ -15,9 +16,13 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+//  Contact ROUTE 
+ Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
+
 //  SUBSCRIPER ROUTE 
- 
-Route::post('/subscriber/store', [SubscriberController::class, 'store'])->name('subscriber.store');
+ Route::post('/subscriber/store', [SubscriberController::class, 'store'])->name('subscriber.store');
 
 
  

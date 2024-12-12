@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//  Blog ROUTE 
+ 
+Route::resource('blogs', BlogController::class);
 
 //  Contact ROUTE 
  Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');

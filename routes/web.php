@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //  Blog ROUTE 
- 
+Route::view('/x','theme.blogs.create');
 Route::resource('blogs', BlogController::class);
 
 //  Contact ROUTE 

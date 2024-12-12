@@ -10,6 +10,14 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+
+      // RELATION HASMANY (1 USER hasMany  Blog)
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
+
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**

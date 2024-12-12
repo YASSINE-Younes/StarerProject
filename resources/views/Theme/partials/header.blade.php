@@ -56,7 +56,9 @@
                      </ul>
 
                      <!-- Add new blog -->
-                     <a href="{{ route('blogs.create') }}" class="btn btn-sm btn-primary mr-2">Add New</a>
+                     @if (Auth::check())
+                         <a href="{{ route('blogs.create') }}" class="btn btn-sm btn-primary mr-2">Add New</a>
+                     @endif
                      <!-- End - Add new blog -->
 
                      <ul class="nav navbar-nav navbar-right navbar-social">
@@ -80,8 +82,8 @@
 
                                          <form action="{{ route('logout') }}" method="post">
                                              @csrf
-                                             <a type="submit" class="nav-link"
-                                                 href="javascript:$('form').submit();">Logout</a>
+                                             <a type="submit" class="nav-link" {{-- href="{{ javascript:$('form').submit(); }}">Logout</a> --}}
+                                                 href="{{ route('logout') }}">Logout</a>
 
                                          </form>
                                      </li>

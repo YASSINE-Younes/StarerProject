@@ -14,17 +14,26 @@
             <div class="row">
                 <div class="col-12">
 
+                    {{-- Start Param Message Success  --}}
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    {{-- End Param Message Success  --}}
+
                     <form method="POST" action="{{ route('blogs.store') }}" class="form-contact contact_form"
                         action="contact_process.php" method="post" id="contactForm" novalidate="novalidate"
                         enctype="multipart/form-data">
                         @csrf
 
 
+
                         {{-- =========== NAME =================  --}}
                         <div class="form-group">
                             {{-- NAME CHAMP  --}}
-                            <input class="form-control border" name="name" type="text" placeholder="Enter your name"
-                                :value="old('name')">
+                            <input value="{{ old('name') }}" class="form-control border" name="name" type="text"
+                                placeholder="Enter your name">
                             {{-- MESSAGE ERROR NAME  --}}
                             @error('name')
                                 <span class="text-danger">{{ $message }}</span>
@@ -45,9 +54,9 @@
                         {{-- =========== IMAGE =================  --}}
                         <div class="form-group">
                             {{-- NAME CHAMP  --}}
-                            <input class="form-control border" name="iamge" type="file" :value="old('name')">
+                            <input class="form-control border" name="image" type="file" :value="old('name')">
                             {{-- MESSAGE ERROR NAME  --}}
-                            @error('name')
+                            @error('image')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>

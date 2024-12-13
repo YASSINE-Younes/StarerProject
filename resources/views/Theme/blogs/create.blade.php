@@ -15,16 +15,15 @@
                 <div class="col-12">
 
                     {{-- Start Param Message Success  --}}
-                    @if (session('status'))
+                    @if (session('status_blog_store'))
                         <div class="alert alert-success">
-                            {{ session('status') }}
+                            {{ session('status_blog_store') }}
                         </div>
                     @endif
                     {{-- End Param Message Success  --}}
 
-                    <form method="POST" action="{{ route('blogs.store') }}" class="form-contact contact_form"
-                        action="contact_process.php" method="post" id="contactForm" novalidate="novalidate"
-                        enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('blogs.store') }}" class="form-contact contact_form" id="contactForm"
+                        novalidate="novalidate" enctype="multipart/form-data">
                         @csrf
 
 
@@ -52,6 +51,9 @@
                         </div>
 
                         {{-- =========== IMAGE =================  --}}
+
+
+
                         <div class="form-group">
                             {{-- NAME CHAMP  --}}
                             <input class="form-control border" name="image" type="file" :value="old('name')">

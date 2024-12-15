@@ -17,9 +17,11 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
 
+            // FK CATEGORY
             $table->bigInteger('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
 
+             // FK USER
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
 

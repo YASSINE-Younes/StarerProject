@@ -101,7 +101,17 @@
                         @foreach ($blogs as $blog)
                             <div class="single-recent-blog-post">
                                 <div class="thumb">
-                                    <img class="img-fluid" width="800px" height="500px"
+
+                                    <style>
+                                        .custom-image {
+                                            width: 700px;
+                                            height: 500px !important;
+                                            object-fit: fill;
+                                            
+                                            /* Optionnel pour ajuster le contenu de l'image */
+                                        }
+                                    </style>
+                                    <img class="img-fluid custom-image" width="800px" height="200px !important"
                                         src="{{ asset('storage') }}/blogs/{{ $blog->image }}" alt="">
 
                                     <ul class="thumb-info">
@@ -136,9 +146,12 @@
 
                     {{-- PAGINATION --}}
                     <div class="row">
-                     
-                        <div class="col-lg-12  d-flex justify-content-center">
-                            {{ $blogs->render('pagination::bootstrap-4') }}
+
+                        <div class="col-lg-12">
+                            <nav class="blog-pagination justify-content-center d-flex">
+                                {{ $blogs->render('pagination::bootstrap-4') }}
+                            </nav>
+
                         </div>
 
                     </div>

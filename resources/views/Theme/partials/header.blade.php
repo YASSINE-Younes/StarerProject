@@ -34,7 +34,7 @@
                          <li class="nav-item submenu dropdown @yield('category-active')">
 
                              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                 aria-haspopup="true" aria-expanded="false">Categories</a>
+                                 aria-haspopup="true" aria-expanded="false">Categories </a>
 
 
 
@@ -45,7 +45,7 @@
 
                                      @foreach ($cats as $c)
                                          <li class="nav-item"><a class="nav-link"
-                                                 href="{{ route('theme.category') }}">{{ $c->name }}</a>
+                                                 href="{{ route('theme.category' , ['id' => $c->id]) }}">{{ $c->name }}</a>
                                          </li>
                                      @endforeach
                                  </ul>

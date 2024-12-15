@@ -38,8 +38,7 @@ Route::controller(ThemeController::class)->name('theme.')->group(function(){
     Route::get('/contact','contact')->name('contact');
  
     Route::get('/singleBlog','singleBlog')->name('singleBlog');
-    // Route::get('/register','register')->name('register');
-    // Route::get('/login','login')->name('login');
+
 });
 
 
@@ -49,9 +48,6 @@ Route::controller(ThemeController::class)->name('theme.')->group(function(){
 
 
 
-Route::get('/x', function () {
-    return view('welcome');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

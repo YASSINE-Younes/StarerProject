@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class ThemeController extends Controller
 {
     function index()
     {
-        return view('Theme.index');
+        $blogs = Blog::paginate(2);
+        return view('Theme.index', compact('blogs'));
     }
 
     function category()

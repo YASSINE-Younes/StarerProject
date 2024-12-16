@@ -131,7 +131,12 @@
                                     <p>
                                         {{ $blog->description }}
                                     </p>
-                                    <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
+
+                                    {{-- BUTTON READ MORE  --}}
+                                    <a class="button" href="{{ route('blogs.show' , ['blog' => $blog]) }}">Read More <i class="ti-arrow-right"></i></a>
+                              
+                                
+
                                 </div>
                             </div>
                         @endforeach

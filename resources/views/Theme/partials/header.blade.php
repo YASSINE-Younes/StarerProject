@@ -45,7 +45,7 @@
 
                                      @foreach ($cats as $c)
                                          <li class="nav-item"><a class="nav-link"
-                                                 href="{{ route('theme.category' , ['id' => $c->id]) }}">{{ $c->name }}</a>
+                                                 href="{{ route('theme.category', ['id' => $c->id]) }}">{{ $c->name }}</a>
                                          </li>
                                      @endforeach
                                  </ul>
@@ -68,9 +68,24 @@
                          @else
                              <li class="nav-item submenu dropdown">
 
-                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
-                                     role="button" aria-haspopup="true" aria-expanded="false">
-                                     {{ Auth::user()->name }}</a>
+                                 {{--  USER  --}}
+
+                                 {{-- CDN ICONS --}}
+                                 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+                                     rel="stylesheet">
+
+
+                                 <a href="#" class="nav-link dropdown-toggle d-flex align-items-center"
+                                     data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                                     style="background-color: #ff9a07; color: white; padding: 9px 15px; border-radius: 25px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-decoration: none; transition: 0.3s;">
+                                     <i class="fa fa-user"
+                                         style="color: white; font-size: 20px; margin-right: 10px;"></i>
+                                     <span style="font-weight: bold; color:#fff;">{{ Auth::user()->name }}</span>
+                                 </a>
+
+
+
+                                  
 
 
                                  <ul class="dropdown-menu">

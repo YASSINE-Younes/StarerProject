@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //  Blog ROUTE 
-Route::view('/x','theme.blogs.create');
+Route::view('/x','theme.single-blog');
 Route::resource('blogs', BlogController::class);
 
 //  Contact ROUTE 
@@ -37,7 +37,7 @@ Route::controller(ThemeController::class)->name('theme.')->group(function(){
     Route::get('/category/{id}','category')->name('category');
     Route::get('/contact','contact')->name('contact');
  
-    Route::get('/singleBlog','singleBlog')->name('singleBlog');
+    // Route::get('/singleBlog','singleBlog')->name('singleBlog');
 
 });
 
@@ -49,9 +49,9 @@ Route::controller(ThemeController::class)->name('theme.')->group(function(){
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

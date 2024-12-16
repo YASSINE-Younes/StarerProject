@@ -27,10 +27,7 @@ class ThemeController extends Controller
         return view('Theme.contact');
     }
     // ========================================
-    function singleBlog()
-    {
-        return view('Theme.single-blog');
-    }
+    
 
  
 

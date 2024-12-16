@@ -3,7 +3,7 @@
 
 
  @section('t2', $blog->name);
- @section('t3', 'Details');
+ @section('t3', $blog->category->name);
 
  @section('content')
 

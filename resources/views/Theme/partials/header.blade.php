@@ -89,8 +89,9 @@
 
 
                                  <ul class="dropdown-menu">
-                                     <li class="nav-item"><a class="nav-link" href="blog-details.html">Update
-                                             Profile</a>
+                                     <li class="nav-item"><a class="nav-link" href="{{ route('blogs.my-blogs') }}">
+                                       My Blogs
+                                            </a>
                                      </li>
                                      <li class="nav-item">
 

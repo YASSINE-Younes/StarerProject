@@ -14,7 +14,7 @@ class Blog extends Model
 
 
     // RELATION BELONGS (1 Blog BelongsTo 1 Category)
-    public function catgory()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }

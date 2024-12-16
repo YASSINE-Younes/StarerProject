@@ -99,4 +99,19 @@ class BlogController extends Controller
     {
         //
     }
+
+    // afficher all user blogs 
+    public function myblogs()
+    {
+        if(Auth::check())
+        {
+            $data = Blog::where('user_id', Auth::id())->paginate(5);
+            return view('theme.blogs.myblogs' , compact('data'));
+        }
+        else 
+        {
+            return redirect()->route('theme.index');
+        }
+     
+    }
 }

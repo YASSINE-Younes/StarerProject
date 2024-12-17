@@ -7,6 +7,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreBlogRequest;
+use App\Http\Requests\UpdateBlogRequest;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -90,10 +92,55 @@ class BlogController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blog $blog)
+    public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        //
-    }
+        
+
+ 
+        $data = $request->validated();
+
+        if($request->hasFile('image'))
+        {
+       
+   
+
+       //0- Delete Old Image
+         Storage::delete("public/blogs/$blog->image");
+
+         
+       // 1- get image
+       $image = $request->image;
+     
+       // 2- change Current NAME
+           $newImageName = time() . '-' . $image->getClientOriginalName();
+   
+       //3- Move image to my project
+       $image->storeAs('blogs' , $newImageName, 'public');
+   
+       //4- save new name to DB
+       $data['image'] = $newImageName;
+
+      
+        }
+        
+        
+   
+   
+       
+   
+       // Faire Ajouter AU BD
+        $blog->update($data);
+      
+          return back()->with('status_blog_edit' ,'Blog Updated with success ;)');
+       }
+
+
+
+
+
+
+
+ 
 
     /**
      * Remove the specified resource from storage.

@@ -3,7 +3,7 @@
 @section('title', 'Index');
 
 @section('t1', 'Home Page');
-@section('t2', 'Travel With Yassine');
+@section('t2', 'Yassine Bogs');
 @section('t3', 'Welcome');
 
 

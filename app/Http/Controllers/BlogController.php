@@ -81,7 +81,10 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+       
+            $categories = Category::get();
+            return view('theme.blogs.edit' , compact('categories' ,'blog'));
+         
     }
 
     /**

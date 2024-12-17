@@ -44,8 +44,8 @@
 
 
                                         <td width= '40%'>
-                                            <button class="btn btn-primary">Update</button>
-                                            <button class="btn btn-danger">Delete</button>
+                                            <a  href="{{ route('blogs.edit' ,['blog' =>$d]) }}" class="btn btn-primary">Edit</a>
+                                            <a  href="#" class="btn btn-danger">Delete</a>
                                         </td>
 
 

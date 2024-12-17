@@ -84,8 +84,13 @@ class BlogController extends Controller
     public function edit(Blog $blog)
     {
        
+
+        if(Auth::check() && Auth::user()->id == $blog->user_id)
+        {
             $categories = Category::get();
             return view('theme.blogs.edit' , compact('categories' ,'blog'));
+        }
+       abort(403);
          
     }
 
@@ -95,7 +100,8 @@ class BlogController extends Controller
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
         
-
+        if(Auth::check() && Auth::user()->id == $blog->user_id)
+        {
  
         $data = $request->validated();
 
@@ -107,7 +113,7 @@ class BlogController extends Controller
        //0- Delete Old Image
          Storage::delete("public/blogs/$blog->image");
 
-         
+
        // 1- get image
        $image = $request->image;
      
@@ -133,7 +139,8 @@ class BlogController extends Controller
       
           return back()->with('status_blog_edit' ,'Blog Updated with success ;)');
        }
-
+       abort(403);
+    }
 
 
 

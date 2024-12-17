@@ -7,7 +7,7 @@
 @section('t2', 'EDIT Blog');
 @section('t3', $blog->name);
 
- 
+
 @section('content')
     <!-- ================ contact section start ================= -->
     <section class="section-margin--small section-margin">
@@ -16,17 +16,19 @@
                 <div class="col-12">
 
                     {{-- Start Param Message Success  --}}
-                    @if (session('status_blog_store'))
-                        <div class="alert alert-success">
-                            {{ session('status_blog_store') }}
+                    @if (session('status_blog_edit'))
+                        <div class="alert alert-info">
+                            {{ session('status_blog_edit') }}
                         </div>
                     @endif
                     {{-- End Param Message Success  --}}
 
-                    <form method="POST" action="{{ route('blogs.store') }}" class="form-contact contact_form" id="contactForm"
-                        novalidate="novalidate" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('blogs.update', ['blog' => $blog]) }}"
+                        class="form-contact contact_form" id="contactForm" novalidate="novalidate"
+                        enctype="multipart/form-data">
                         @csrf
 
+                        @method('PUT')
 
 
                         {{-- =========== NAME =================  --}}
@@ -58,7 +60,7 @@
                         <div class="form-group">
                             {{-- NAME CHAMP  --}}
                             <input class="form-control border" name="image" type="file" value="{{ $blog->image }}">
-                            
+
                             {{-- MESSAGE ERROR NAME  --}}
                             @error('image')
                                 <span class="text-danger">{{ $message }}</span>
@@ -71,10 +73,12 @@
                             <select class="form-control border" name="category_id" placeholder="Enter Category Id"
                                 :value="old('category_id')">
 
-                                <option value="">{{ $blog->category->name  }}</option>
+                               
                                 @if (count($categories) > 0)
+
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">
+                                        <option value="{{ $category->id }}"
+                                            @if ($category->id == $blog->category_id) selected @endif>
                                             {{ $category->name }}
                                         </option>
                                     @endforeach

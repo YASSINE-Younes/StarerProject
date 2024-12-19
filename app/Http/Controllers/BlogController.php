@@ -162,6 +162,10 @@ class BlogController extends Controller
         {
               //0- Delete Old Image
          Storage::delete("public/blogs/$blog->image");
+
+        // Suppimer Comment belengs to this blog
+         $blog->comments()->delete(); 
+         
               // DELETE BLOG 
          $blog->delete();
              // MESSAGE SUCCESS SUPRESSION

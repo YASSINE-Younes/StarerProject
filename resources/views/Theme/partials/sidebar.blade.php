@@ -1,7 +1,9 @@
  {{--  START CODE PHP ACCEDER A CATEGORY NAME SEEDER --}}
  @php
      use App\Models\Category;
+     use App\Models\Blog;
      $categories = Category::all();
+     $recentBlogs = Blog::latest()->take(3)->get();
  @endphp
  {{--  END CODE PHP ACCEDER A CATEGORY NAME SEEDER --}}
 
@@ -75,53 +77,41 @@
          <div class="single-sidebar-widget popular-post-widget">
              <h4 class="single-sidebar-widget__title">Recent Post</h4>
              <div class="popular-post-list">
-                 <div class="single-post-list">
-                     <div class="thumb">
-                         <img class="card-img rounded-0" src="{{ asset('assets') }}/img/blog/thumb/thumb1.png"
-                             alt="">
-                         <ul class="thumb-info">
-                             <li><a href="#">Adam Colinge</a></li>
-                             <li><a href="#">Dec 15</a></li>
-                         </ul>
-                     </div>
-                     <div class="details mt-20">
-                         <a href="blog-single.html">
-                             <h6>Accused of assaulting flight attendant miktake alaways</h6>
-                         </a>
-                     </div>
-                 </div>
-                 <div class="single-post-list">
-                     <div class="thumb">
-                         <img class="card-img rounded-0" src="{{ asset('assets') }}/img/blog/thumb/thumb2.png"
-                             alt="">
-                         <ul class="thumb-info">
-                             <li><a href="#">Adam Colinge</a></li>
-                             <li><a href="#">Dec 15</a></li>
-                         </ul>
-                     </div>
-                     <div class="details mt-20">
-                         <a href="blog-single.html">
-                             <h6>Tennessee outback steakhouse the
-                                 worker diagnosed</h6>
-                         </a>
-                     </div>
-                 </div>
-                 <div class="single-post-list">
-                     <div class="thumb">
-                         <img class="card-img rounded-0" src="{{ asset('assets') }}/img/blog/thumb/thumb3.png"
-                             alt="">
-                         <ul class="thumb-info">
-                             <li><a href="#">Adam Colinge</a></li>
-                             <li><a href="#">Dec 15</a></li>
-                         </ul>
-                     </div>
-                     <div class="details mt-20">
-                         <a href="blog-single.html">
-                             <h6>Tennessee outback steakhouse the
-                                 worker diagnosed</h6>
-                         </a>
-                     </div>
-                 </div>
+
+                 {{-- START RECENT POST   --}}
+
+                 @if (count($recentBlogs) > 0)
+                     @foreach ($recentBlogs as $b)
+                         <div class="single-post-list">
+                             <div class="thumb">
+                                 <img class="card-img rounded-0" src="{{ asset('storage/blogs/' . $b->image) }}"
+                                     alt="{{ $b->title }}">
+                                 <ul class="thumb-info">
+                                     <li><a href="#">{{ $b->name }}</a></li>
+                                     <li><a href="#">{{ $b->created_at->format('d M, Y') }}</a></li>
+                                 </ul>
+                             </div>
+                             <div class="details mt-20">
+                                 <a href="{{ route('blogs.show' , ['blog' => $b]) }}">
+                                    
+                                     <h6>{{ $b->description }}</h6>
+                                 </a>
+                             </div>
+                         </div>
+                     @endforeach
+
+                    @else
+                    <h3>Aucun Post Existe</h3>
+                 @endif
+
+                 {{-- END RECENT POST   --}}
+
+
+
+
+
+
+
              </div>
          </div>
      </div>

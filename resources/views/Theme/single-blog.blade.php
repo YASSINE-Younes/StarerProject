@@ -97,27 +97,83 @@
 
                      <div class="comment-form">
                          <h4>Leave a Reply</h4>
-                         <form>
+
+                         {{-- COMMENT FORM  --}}
+
+
+                         {{-- CODE MESSAGE ENVOYER AVEC SUCEES PARAMETRE STATUS  --}}
+                         @if (session('status_store_Comments'))
+                             <div class="alert alert-success">
+                                 {{ session('status_store_Comments') }}
+                             </div>
+                         @endif
+
+
+                         <form method="POST" action="{{ route('comment.store') }}">
+                             @csrf
                              <div class="form-group form-inline">
+
+
                                  <div class="form-group col-lg-6 col-md-6 name">
-                                     <input type="text" class="form-control" id="name" placeholder="Enter Name"
-                                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+
+                                     {{-- NAME  --}}
+                                     <input name ="blog_id" type="hidden" value="{{ $blog->id }}">
+
+
+                                     {{-- NAME  --}}
+                                     <input name ="name" type="text" class="form-control" id="name"
+                                         placeholder="Enter Name" onfocus="this.placeholder = ''"
+                                         onblur="this.placeholder = 'Enter Name'">
+
+                                     {{--  MESSAGE ERROR Name  --}}
+                                     @error('name')
+                                         <span class="text-danger">{{ $message }}</span>
+                                     @enderror
+
                                  </div>
+
+
                                  <div class="form-group col-lg-6 col-md-6 email">
-                                     <input type="email" class="form-control" id="email"
+                                     {{-- EMAIL  --}}
+                                     <input name ="email" type="email" class="form-control" id="email"
                                          placeholder="Enter email address" onfocus="this.placeholder = ''"
                                          onblur="this.placeholder = 'Enter email address'">
+
+                                     {{--  MESSAGE ERROR email  --}}
+                                     @error('email')
+                                         <span class="text-danger">{{ $message }}</span>
+                                     @enderror
                                  </div>
+
                              </div>
+
+
                              <div class="form-group">
-                                 <input type="text" class="form-control" id="subject" placeholder="Subject"
-                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+                                 {{-- SUBJECT  --}}
+                                 <input name ="subject" type="text" class="form-control" id="subject"
+                                     placeholder="Subject" onfocus="this.placeholder = ''"
+                                     onblur="this.placeholder = 'Subject'">
+
+                                 {{--  MESSAGE ERROR subject  --}}
+                                 @error('subject')
+                                     <span class="text-danger">{{ $message }}</span>
+                                 @enderror
                              </div>
+
+
                              <div class="form-group">
-                                 <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''"
-                                     onblur="this.placeholder = 'Messege'" required=""></textarea>
+                                 {{-- MESSAGE  --}}
+                                 <textarea name ="message" class="form-control mb-10" rows="5" name="message" placeholder="Messege"
+                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'"></textarea>
+
+                                 {{--  MESSAGE ERROR message  --}}
+                                 @error('message')
+                                     <span class="text-danger">{{ $message }}</span>
+                                 @enderror
                              </div>
-                             <a href="#" class="button submit_btn">Post Comment</a>
+
+                             {{-- BUTTON SUBMIT  --}}
+                             <button type="submit" class="button submit_btn">Post Comment</button>
                          </form>
                      </div>
                  </div>

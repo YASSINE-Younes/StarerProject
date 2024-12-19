@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
@@ -75,7 +76,10 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         
-        return view('Theme.single-blog', compact('blog'));
+
+        $comments = Comment::where('blog_id', $blog->id)->get();
+
+        return view('Theme.single-blog', compact('blog','comments'));
     }
 
     /**

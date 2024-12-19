@@ -14,72 +14,29 @@
     <section>
         <div class="container">
             <div class="owl-carousel owl-theme blog-slider">
-                <div class="card blog__slide text-center">
-                    <div class="blog__slide__img">
-                        <img class="card-img rounded-0" src="{{ asset('assets') }}/img/blog/blog-slider/blog-slide1.png"
-                            alt="">
-                    </div>
-                    <div class="blog__slide__content">
-                        <a class="blog__slide__label" href="#">Fashion</a>
-                        <h3><a href="#">New york fashion week's continued the evolution</a></h3>
-                        <p>2 days ago</p>
-                    </div>
-                </div>
-                <div class="card blog__slide text-center">
-                    <div class="blog__slide__img">
-                        <img class="card-img rounded-0" src="{{ asset('assets') }}/img/blog/blog-slider/blog-slide2.png"
-                            alt="">
-                    </div>
-                    <div class="blog__slide__content">
-                        <a class="blog__slide__label" href="#">Fashion</a>
-                        <h3><a href="#">New york fashion week's continued the evolution</a></h3>
-                        <p>2 days ago</p>
-                    </div>
-                </div>
-                <div class="card blog__slide text-center">
-                    <div class="blog__slide__img">
-                        <img class="card-img rounded-0" src="{{ asset('assets') }}/img/blog/blog-slider/blog-slide3.png"
-                            alt="">
-                    </div>
-                    <div class="blog__slide__content">
-                        <a class="blog__slide__label" href="#">Fashion</a>
-                        <h3><a href="#">New york fashion week's continued the evolution</a></h3>
-                        <p>2 days ago</p>
-                    </div>
-                </div>
-                <div class="card blog__slide text-center">
-                    <div class="blog__slide__img">
-                        <img class="card-img rounded-0" src="{{ asset('assets') }}/img/blog/blog-slider/blog-slide1.png"
-                            alt="">
-                    </div>
-                    <div class="blog__slide__content">
-                        <a class="blog__slide__label" href="#">Fashion</a>
-                        <h3><a href="#">New york fashion week's continued the evolution</a></h3>
-                        <p>2 days ago</p>
-                    </div>
-                </div>
-                <div class="card blog__slide text-center">
-                    <div class="blog__slide__img">
-                        <img class="card-img rounded-0" src="{{ asset('assets') }}/img/blog/blog-slider/blog-slide2.png"
-                            alt="">
-                    </div>
-                    <div class="blog__slide__content">
-                        <a class="blog__slide__label" href="#">Fashion</a>
-                        <h3><a href="#">New york fashion week's continued the evolution</a></h3>
-                        <p>2 days ago</p>
-                    </div>
-                </div>
-                <div class="card blog__slide text-center">
-                    <div class="blog__slide__img">
-                        <img class="card-img rounded-0" src="{{ asset('assets') }}/img/blog/blog-slider/blog-slide3.png"
-                            alt="">
-                    </div>
-                    <div class="blog__slide__content">
-                        <a class="blog__slide__label" href="#">Fashion</a>
-                        <h3><a href="#">New york fashion week's continued the evolution</a></h3>
-                        <p>2 days ago</p>
-                    </div>
-                </div>
+
+                @if (count($recent_blogs_slider) > 0)
+                    @foreach ($recent_blogs_slider as $b)
+                        <div class="card blog__slide text-center">
+                            <div class="blog__slide__img">
+                                <img class="card-img rounded-0" src="{{ asset('storage') }}/blogs/{{ $b->image }}"
+                                    alt="" height="250px" width="150px">
+                            </div>
+                            <div class="blog__slide__content">
+                                <a class="blog__slide__label"  >{{ $b->category->name }}</a>
+                                <h3><a href="{{ route('blogs.show', ['blog' => $b]) }}">{{ $b->name }}n</a></h3>
+                                <p>{{ $b->created_at->format('d M Y') }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    @else
+                    <h3>-- Slide Vide --</h3>
+                @endif
+
+
+
+
             </div>
         </div>
     </section>
@@ -107,7 +64,7 @@
                                             width: 700px;
                                             height: 500px !important;
                                             object-fit: fill;
-                                            
+
                                             /* Optionnel pour ajuster le contenu de l'image */
                                         }
                                     </style>
@@ -133,9 +90,10 @@
                                     </p>
 
                                     {{-- BUTTON READ MORE  --}}
-                                    <a class="button" href="{{ route('blogs.show' , ['blog' => $blog]) }}">Read More <i class="ti-arrow-right"></i></a>
-                              
-                                
+                                    <a class="button" href="{{ route('blogs.show', ['blog' => $blog]) }}">Read More <i
+                                            class="ti-arrow-right"></i></a>
+
+
 
                                 </div>
                             </div>

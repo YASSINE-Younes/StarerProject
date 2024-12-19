@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
@@ -17,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+//  Comments ROUTE 
+Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.store');
+
 
 //  Blog ROUTE 
 Route::get('my-blogs' , [BlogController::class , 'myblogs'])->name('blogs.my-blogs');

@@ -26,7 +26,7 @@ Route::post('/comment/store', [CommentController::class, 'store'])->name('commen
 
 //  Blog ROUTE 
 Route::get('my-blogs' , [BlogController::class , 'myblogs'])->name('blogs.my-blogs');
-Route::resource('blogs', BlogController::class);
+Route::resource('blogs', BlogController::class)->except('index');
 
 //  Contact ROUTE 
  Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
@@ -43,7 +43,7 @@ Route::controller(ThemeController::class)->name('theme.')->group(function(){
     Route::get('/category/{id}','category')->name('category');
     Route::get('/contact','contact')->name('contact');
  
-    // Route::get('/singleBlog','singleBlog')->name('singleBlog');
+  
 
 });
 
